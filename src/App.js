@@ -7,8 +7,7 @@ import { Toaster, toast } from "react-hot-toast";
 // replace with your own appID and appSecret from https://dev.reclaimprotocol.org/
 const reclaim = new ReclaimClient(
   process.env.REACT_APP_RECLAIM_APP_ID,
-  process.env.REACT_APP_RECLAIM_APP_SECRET,
-  true
+  process.env.REACT_APP_RECLAIM_APP_SECRET
 );
 
 function App() {
