@@ -1,7 +1,6 @@
 import { ReclaimClient } from "@reclaimprotocol/zk-fetch";
 import "./App.css";
 import { useState } from "react";
-import { JsonEditor } from "json-edit-react";
 import { Toaster, toast } from "react-hot-toast";
 
 // replace with your own appID and appSecret from https://dev.reclaimprotocol.org/
@@ -102,18 +101,7 @@ function App() {
               <h3 className="text-2xl font-bold text-white mb-4">
                 Proof Received
               </h3>
-              <JsonEditor
-                rootName="proof"
-                data={proofData}
-                viewOnly={true}
-                restrictEdit={true}
-                restrictAdd={true}
-                restrictDelete={true}
-                restrictDrag={true}
-                theme={"githubDark"}
-                maxWidth={"100%"}
-                minWidth={"100%"}
-              />
+              {JSON.stringify(proofData,null,"")}
             </div>
           )}
         </div>
