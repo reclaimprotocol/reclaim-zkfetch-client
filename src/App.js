@@ -97,11 +97,30 @@ function App() {
           </button>
           
           {proofData && !isFetching && (
-            <div className="w-full bg-gray-800 rounded-lg shadow-xl p-6 mt-8">
-              <h3 className="text-2xl font-bold text-white mb-4">
+            <div style={{
+              width: '100%',
+              backgroundColor: '#1f2937',
+              borderRadius: '0.5rem',
+              boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+              padding: '1.5rem',
+              marginTop: '2rem'
+            }}>
+              <h3 style={{
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                color: 'white',
+                marginBottom: '1rem'
+              }}>
                 Proof Received
               </h3>
-              {JSON.stringify(proofData,null,"")}
+              <div style={{
+                color: 'white',
+                overflowX: 'auto',
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word'
+              }}>
+                {JSON.stringify(proofData, null, 2)}
+              </div>
             </div>
           )}
         </div>
