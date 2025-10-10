@@ -4,11 +4,6 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 module.exports = function override(config) {
   // Add polyfills for Node.js core modules
   const fallback = config.resolve.fallback || {};
-  const alias = {
-    koffi: false,
-    "react-native-tcp-socket": false,
-  }
-  config.resolve.alias = alias;
   Object.assign(fallback, {
     crypto: require.resolve("crypto-browserify"),
     stream: require.resolve("stream-browserify"),
@@ -22,29 +17,20 @@ module.exports = function override(config) {
     zlib: require.resolve("browserify-zlib"),
     fs: false,
     net: false,
-    koffi: false,
-    "react-native-tcp-socket": false,
     tls: false,
-    worker_threads: false,
     readline: false,
     child_process: false,
     constants: require.resolve("constants-browserify"),
     process: require.resolve("process/browser.js"),
+    worker_threads: require.resolve("./worker-threads-polyfill.js"),
   });
 
-  // Set up alias for disabling node:url
+  // Set up aliases
   config.resolve.alias = {
     ...(config.resolve.alias || {}),
-    'node:url': require.resolve("url/"), // Add this line
-  };
-
-  // Add alias for node:url to mock-url.js
-  config.resolve = {
-    ...config.resolve,
-    alias: {
-      ...config.resolve.alias,
-     'node:url': require.resolve('url/'), 
-    }
+    'node:url': require.resolve('url/'),
+    'koffi': false,
+    'react-native-tcp-socket': false,
   };
 
   // Ensure fallback is applied
